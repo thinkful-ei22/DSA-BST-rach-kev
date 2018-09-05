@@ -12,7 +12,7 @@ class BinarySearchTree{
       this.key = key;
       this.value = value;
     }
-    else if(key < this.key){
+    else if(key > this.key){
       //if the existing node does not have any left child (null),
       //then we can just add the new node
       if(this.left === null){
@@ -113,6 +113,13 @@ class BinarySearchTree{
     }
     return this.left._findMin();
   }
+  _findMax(){
+    if(!this.right){
+      return this;
+    }
+    return this.right_findMax();
+  }
 }
+
 
 module.exports = BinarySearchTree;

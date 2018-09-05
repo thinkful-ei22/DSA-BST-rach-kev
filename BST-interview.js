@@ -30,25 +30,21 @@ check if right child is greater than the parent
 */
 
 
-function isSearchTree(bst) {
-  let isSearch = false;
-  if (!bst.left && !bst.right) {
-    isSearch = true;
+function isSearchTree(bst, min, max) {
+  if(min !== undefined && bst.key < min){
+    return false;
   }
-  if (bst.left && (bst.left > bst.key)) {
-    isSearchTree(bst.left);
-  } else {
+  if(max !== undefined && bst.key > max){
+    return false;
+  }
+  if (bst.left && !isSearchTree(bst.left, min, bst.key)){
     return false;
   }
   // console.log(leftSide, 'left');
-
-  if (bst.right && (bst.right > bst.key)) {
-    isSearchTree(bst.right);
-    // console.log(rightSide, 'right');
-  } else {
+  if (bst.right && !isSearchTree(bst.right, bst.key, max)){ 
     return false;
   }
-  return isSearch;
+  return true;
 }
 
 function main() {
@@ -61,9 +57,11 @@ function main() {
   bst.insert(2.5, null);
   bst.insert(13, null);
   bst.insert(20, null);
-  console.log(bst);
+  // console.log(bst);
   //console.log(height(bst));
-  console.log(isSearchTree(bst))
+  console.log(JSON.stringify(
+    isSearchTree(bst, 2, 20), null, 2)
+  );
 }
 
 main();
