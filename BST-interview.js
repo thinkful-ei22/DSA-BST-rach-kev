@@ -55,24 +55,24 @@ function thirdLargest(bst, max) {
 
   if (bst.key === max) {
     if (bst.left.right) {
-      console.log("bst.left.key", bst.left.key)
+      console.log('bst.left.key', bst.left.key);
       return bst.left.key; 
     }
     else if (bst.left.left && !bst.left.right) {
-      console.log("bst.left.left.key", bst.left.left.key)
+      console.log('bst.left.left.key', bst.left.left.key);
       return bst.left.left.key;
     }
   }
   else if (bst.key !== max){
     if (bst.right && (bst.right.key < max)) {
-     thirdLargest(bst.right, max);
+      thirdLargest(bst.right, max);
     } 
     else if ((bst.right.key === max) && bst.parent.left) {
-      console.log("bst.parent.left.key", bst.parent.left.key)
-      return bst.parent.left.key;
+      console.log('bst.parent.left.key', bst.parent.key);
+      return bst.parent.key;
     }
     else if (bst.right.key === max && !bst.parent.left) {
-      console.log("bst.parent.key", bst.parent.key)
+      console.log('bst.parent.key', bst.parent.key);
       return bst.parent.key;
     }
   }
@@ -93,7 +93,7 @@ function main() {
   // console.log(JSON.stringify(
   //   isSearchTree(bst, 2, 20), null, 2)
   // );
-  console.log(thirdLargest(bst, 20))
+  console.log(thirdLargest(bst,20));
 }
 
 main();
